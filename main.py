@@ -1,4 +1,3 @@
-# made by @kotokk
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
@@ -47,6 +46,12 @@ def start_progress():
 root = tk.Tk()
 root.title("Age Calculator")
 root.geometry("300x200")
+
+style = ttk.Style()
+if "vista" in style.theme_names():
+    style.theme_use("vista")
+elif "xpnative" in style.theme_names():
+    style.theme_use("xpnative")
 
 label = tk.Label(root, text="Enter your age in years:")
 label.pack(pady=10)
