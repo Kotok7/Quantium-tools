@@ -2,30 +2,32 @@
 #include <cstdlib>
 #include <unistd.h>
 
-int wiek;
+int age;
 
 int main() {
-	std::cout << "Ile masz lat?" << std::endl;
-	std::cin >> wiek;
-	
-	system("clear");
-	
-	sleep(1);
-	std::cout << "Obliczanie wieku" << std::endl;
-	
-	sleep(1);
-	system("clear");
-	std::cout << "Obliczanie wieku." << std::endl;
-	
-	sleep(1);
-	system("clear");
-	std::cout << "Obliczanie wieku.." << std::endl;
-	
-	sleep(1);
-	system("clear");
-	std::cout << "Obliczanie wieku..." << std::endl;
-	
-	sleep(1);
-	system("clear");
-	std::cout << "Masz " << wiek << " lat";
+    std::cout << "How old are you?" << std::endl;
+    std::cin >> age;
+    
+    system("clear");
+    
+    sleep(1);
+    std::cout << "Calculating age" << std::endl;
+    
+    sleep(1);
+    system("clear");
+    std::cout << "Calculating age." << std::endl;
+    
+    sleep(1);
+    system("clear");
+    std::cout << "Calculating age.." << std::endl;
+    
+    sleep(1);
+    system("clear");
+    std::cout << "Calculating age..." << std::endl;
+    
+    sleep(1);
+    system("clear");
+    std::cout << "You are " << age << " years old" << std::endl;
+    
+    return 0;
 }
