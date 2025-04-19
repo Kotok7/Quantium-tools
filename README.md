@@ -1,0 +1,1 @@
+A totally serious desktop utility app that does everything from calculating your age (in years, not seconds anymore – you're welcome 😎), checking the weather (by telling you to look outside), and scanning your local "server" (a.k.a. your own computer). Packed with tools you didn't know you needed, and still probably don't.
