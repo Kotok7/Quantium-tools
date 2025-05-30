@@ -3,7 +3,7 @@ from tkinter import messagebox, ttk
 
 root = tk.Tk()
 root.title("Quantium tools")
-root.geometry("450x250")
+root.geometry("450x300")
 
 progress_value = 0
 max_value = 100
@@ -71,7 +71,7 @@ def run_weather():
     start_progress(messages, callback)
 
 def run_age():
-    user_name = entry_name.get().strip()
+    name = entry_name.get().strip()
     try:
         age = int(entry_age.get())
     except ValueError:
@@ -85,12 +85,12 @@ def run_age():
         "Almost done..."
     ]
     def callback():
-        messagebox.showinfo("Result", f"{user_name}, you are around {age} years old.")
+        messagebox.showinfo("Result", f"{name}, you are around {age} years old.")
     start_progress(messages, callback)
 
 def run_name():
-    user_name = entry_name_only.get().strip()
-    if not user_name:
+    name = entry_name_only.get().strip()
+    if not name:
         messagebox.showerror("Error", "Please enter a name.")
         return
     messages = [
@@ -101,7 +101,7 @@ def run_name():
         "Almost there..."
     ]
     def callback():
-        messagebox.showinfo("Hello", f"Your name is {user_name}!")
+        messagebox.showinfo("Hello", f"Your name is {name}!")
     start_progress(messages, callback)
 
 def run_fake_scan():
@@ -119,42 +119,72 @@ def run_fake_scan():
         )
     start_progress(messages, callback)
 
+def run_calculator():
+    expr = entry_calc.get().strip()
+    if not expr:
+        messagebox.showerror("Error", "Please enter an expression.")
+        return
+    messages = [
+        "Parsing expression...",
+        "Evaluating result...",
+        "Generating answer...",
+        "Almost there...",
+        "Done..."
+    ]
+    def callback():
+        messagebox.showinfo("Calculator", "Just ask ChatGPT")
+    start_progress(messages, callback)
+
 weather_frame = tk.Frame(root)
 age_frame = tk.Frame(root)
 name_frame = tk.Frame(root)
 fakescan_frame = tk.Frame(root)
-all_frames = [weather_frame, age_frame, name_frame, fakescan_frame]
+calc_frame = tk.Frame(root)
+all_frames = [weather_frame, age_frame, name_frame, fakescan_frame, calc_frame]
 
-tk.Label(weather_frame, text="Enter location:").pack()
+label = tk.Label(weather_frame, text="Enter location:")
+label.pack()
 entry_location = tk.Entry(weather_frame)
 entry_location.pack()
 btn_weather = tk.Button(weather_frame, text="Check Weather", command=run_weather)
 btn_weather.pack(pady=5)
 
-tk.Label(age_frame, text="Enter your name:").pack()
+label = tk.Label(age_frame, text="Enter your name:")
+label.pack()
 entry_name = tk.Entry(age_frame)
 entry_name.pack()
-tk.Label(age_frame, text="Enter your age in years:").pack()
+label = tk.Label(age_frame, text="Enter your age in years:")
+label.pack()
 entry_age = tk.Entry(age_frame)
 entry_age.pack()
 btn_age = tk.Button(age_frame, text="Calculate Age", command=run_age)
 btn_age.pack(pady=5)
 
-tk.Label(name_frame, text="Enter your name:").pack()
+label = tk.Label(name_frame, text="Enter your name:")
+label.pack()
 entry_name_only = tk.Entry(name_frame)
 entry_name_only.pack()
 btn_name = tk.Button(name_frame, text="Check Name", command=run_name)
 btn_name.pack(pady=5)
 
-tk.Label(fakescan_frame, text="Server Diagnostic Tool").pack(pady=10)
+label = tk.Label(fakescan_frame, text="Server Diagnostic Tool")
+label.pack(pady=10)
 btn_fake = tk.Button(fakescan_frame, text="Check Server Stats", command=run_fake_scan)
 btn_fake.pack(pady=10)
+
+label = tk.Label(calc_frame, text="Enter calculation:")
+label.pack()
+entry_calc = tk.Entry(calc_frame)
+entry_calc.pack()
+btn_calc = tk.Button(calc_frame, text="Compute", command=run_calculator)
+btn_calc.pack(pady=5)
 
 buttons = {
     weather_frame: btn_weather,
     age_frame: btn_age,
     name_frame: btn_name,
-    fakescan_frame: btn_fake
+    fakescan_frame: btn_fake,
+    calc_frame: btn_calc
 }
 
 menu = tk.Menu(root)
@@ -165,5 +195,6 @@ main_menu.add_command(label="☁ Check Weather", command=lambda: show_frame(weat
 main_menu.add_command(label="🧮 Calculate Age", command=lambda: show_frame(age_frame))
 main_menu.add_command(label="🧑 Check Name", command=lambda: show_frame(name_frame))
 main_menu.add_command(label="📟 Server Stats", command=lambda: show_frame(fakescan_frame))
+main_menu.add_command(label="🖩 Calculator", command=lambda: show_frame(calc_frame))
 
 root.mainloop()
