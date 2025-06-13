@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotokk - Narzędzia kwantowe</title>
+    <link rel="icon" type="image/png" href="website-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="Prosta strona internetowa z paroma narzędziami: kalkulatorem wieku, fałszywymi statystykami serwera, sprawdzaczem imion, aplikacją pogodową i kalkulatorem. Program został przepisany z wersji w Pythonie na HTML." />
+</head>
+<body>
+    <div class="app-container">
+        <div class="title-bar">Narzędzia Quantium</div>
+        <div class="menu-bar">
+            <button class="menu-button" onclick="toggleDropdown(event)">
+                🎛 Opcje
+                <div class="dropdown" id="optionsDropdown">
+                    <div class="dropdown-item" onclick="showFrame('weather')">☁ Sprawdź pogodę</div>
+                    <div class="dropdown-item" onclick="showFrame('age')">🧮 Oblicz wiek</div>
+                    <div class="dropdown-item" onclick="showFrame('name')">🧑 Sprawdź imię</div>
+                    <div class="dropdown-item" onclick="showFrame('fakescan')">📟 Statystyki serwera</div>
+                    <div class="dropdown-item" onclick="showFrame('calc')">🖩 Kalkulator</div>
+                    <div class="dropdown-item"><a href="https://github.com/Kotok7/Quantium-tools" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+                </div>
+            </button>
+        </div>
+        
+        <div class="content-area">
+            <!-- Weather Frame -->
+            <div class="frame" id="weather-frame">
+                <label>Wprowadź lokalizację:</label>
+                <input type="text" id="location-input" placeholder="Nazwa miasta">
+                <br>
+                <button onclick="runWeather()">Sprawdź pogodę</button>
+            </div>
+
+            <!-- Age Frame -->
+            <div class="frame" id="age-frame">
+                <label>Wprowadź swoje imię:</label>
+                <input type="text" id="name-input" placeholder="Twoje imię">
+                <br>
+                <label>Wprowadź swój wiek w latach:</label>
+                <input type="number" id="age-input" placeholder="Wiek">
+                <br>
+                <button onclick="runAge()">Oblicz wiek</button>
+            </div>
+
+            <!-- Name Frame -->
+            <div class="frame" id="name-frame">
+                <label>Wprowadź swoje imię:</label>
+                <input type="text" id="name-only-input" placeholder="Twoje imię">
+                <br>
+                <button onclick="runName()">Sprawdź imię</button>
+            </div>
+
+            <!-- Fake Scan Frame -->
+            <div class="frame" id="fakescan-frame">
+                <label style="font-size: 14px; margin-bottom: 20px;">Narzędzie diagnostyki serwera</label>
+                <br>
+                <button onclick="runFakeScan()">Sprawdź statystyki serwera</button>
+            </div>
+
+            <!-- Calculator Frame -->
+            <div class="frame" id="calc-frame">
+                <label>Wprowadź działanie:</label>
+                <input type="text" id="calc-input" placeholder="np. 2 + 2">
+                <br>
+                <button onclick="runCalculator()">Oblicz</button>
+            </div>
+
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="status-label" id="status-label"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header" id="modal-title">Informacja</div>
+            <div class="modal-body" id="modal-body">Treść komunikatu</div>
+            <div class="modal-footer">
+                <button class="modal-button" onclick="closeModal()">OK</button>
+            </div>
+        </div>
+    </div>
+      <script src="script-pl.js"></script>
+</body>
+</html>
