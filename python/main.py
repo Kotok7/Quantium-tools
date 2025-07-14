@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 
 root = tk.Tk()
-root.title("Quantium tools")
+root.title("Quantum tools")
 root.geometry("450x300")
 
 progress_value = 0
